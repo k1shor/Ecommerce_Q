@@ -6,6 +6,7 @@ require('./database/connection');
 
 const categoryRoutes = require('./routes/categoryRoutes');
 const userRoute = require('./routes/userRoutes')
+const cors = require('cors')
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 
 //middleware
 app.use(express.json());
+app.use(cors())
 
 //routes
 app.use(categoryRoutes);
