@@ -1,8 +1,11 @@
 const express = require('express');
 require ('dotenv').config();  
+
 const app = express();
 const port = process.env.PORT ;
+
 require('./database/connection');
+const morgan = require('morgan')
 
 const categoryRoutes = require('./routes/categoryRoutes');
 const userRoute = require('./routes/userRoutes')
@@ -14,6 +17,7 @@ app.get('/', (req, res) => {
 
 //middleware
 app.use(express.json());
+app.use(morgan('dev'))
 app.use(cors())
 
 //routes
