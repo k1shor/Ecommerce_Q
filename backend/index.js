@@ -15,9 +15,10 @@ app.get('/', (req, res) => {
 app.use(express.json());
 
 //routes
-app.use(categoryRoutes);
+app.use('/api', require('./routes/categoryRoutes'));
 app.use('/api', require('./routes/subcategoryRoutes'));
-app.use(userRoute)
+app.use('/api', require('./routes/userRoutes'))
+
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
