@@ -9,7 +9,7 @@ const subcategorySchema = new mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
-        required: true
+        required: false
     },
 
     slug: {
@@ -20,13 +20,13 @@ const subcategorySchema = new mongoose.Schema({
 
     description: {
         type: String,
-        required: true,
+        required: false,
         trim : true
     },
     
     image: {
         type: String,
-        required: true,
+        required: false,
         trim : true
     }
 }, {timestamps: true});

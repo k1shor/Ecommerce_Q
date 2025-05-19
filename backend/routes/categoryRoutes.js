@@ -10,14 +10,19 @@ const {
   editCategory
 } = require('../controllers/categoryController'); 
 
+
+
+
 const { isAdmin } = require('../middleware/authorization');
 
 // Routes
-router.get('/getallcategories', isAdmin, getAllCategories);
-router.post('/addcategory', isAdmin, addCategory);
+router.get('/getallcategories', getAllCategories);
+router.post('/addcategory', addCategory);
 
-router.put('/updatecategory/:id', isAdmin, updateCategories);
-router.delete('/deletecategory/:id', isAdmin, deleteCategory);
-router.get('/editcategory/:id', isAdmin, editCategory);
+router.put('/updatecategory/:id',  updateCategories);
+router.delete('/deletecategory/:id', deleteCategory);
+router.get('/editcategory/:id',  editCategory);
+
+
 
 module.exports = router;
