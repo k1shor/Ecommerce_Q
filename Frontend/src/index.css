@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*  */
 * {
   margin: 0;
@@ -185,3 +186,6 @@ a:hover{
   font-size: 16px;
   padding : 7px;
 }
+=======
+@import "tailwindcss";
+>>>>>>> 0466c7fa16f3ee28786e90a37f25e97877f263ca

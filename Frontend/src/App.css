@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* header */
 
 * {
@@ -186,3 +187,17 @@ a:hover {
   font-size: 16px;
   padding: 7px;
 }
+=======
+@plugin "daisyui";
+@import "tailwindcss";
+
+.btn{
+  padding: 10px 20px;
+  @apply bg-blue-400 hover:bg-blue-300 active:bg-blue-500;
+  border-radius: 10px;
+  @apply shadow-lg m-2
+  
+}
+
+
+>>>>>>> 0466c7fa16f3ee28786e90a37f25e97877f263ca
