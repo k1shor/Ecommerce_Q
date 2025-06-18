@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../api/userApi';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+ 
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
     if (!email || !password) {
@@ -13,29 +16,17 @@ const Login = () => {
       return;
     }
 
-    try {
-      const response = await fetch('http://localhost:5000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
+    login(email, password)
+      .then((result) => {
         localStorage.setItem('token', result.data);
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
         alert('Login successful and details saved!');
-        // Redirect or perform other actions here
-      } else {
-        alert(result.error || 'Login failed.');
-      }
-    } catch (error) {
-      alert('Something went wrong. Please try again later.');
-    }
+        
+      })
+      .catch((error) => {
+        alert(error.message || 'Something went wrong.');
+      });
   };
 
   return (
@@ -62,7 +53,7 @@ const Login = () => {
         />
 
         <button
-          className="btn w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded"
+          className="btn w-full bg-blue-500 text-white py-2 rounded"
           onClick={handleLogin}
         >
           Login

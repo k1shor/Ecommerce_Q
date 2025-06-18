@@ -1,6 +1,7 @@
-<<<<<<< HEAD
+@import "tailwindcss";
+
 /*  */
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -91,7 +92,7 @@ nav {
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   nav {
     position: absolute;
     top: 70px;
@@ -184,8 +185,6 @@ a:hover{
   color: white;
   margin: 0;
   font-size: 16px;
-  padding : 7px;
-}
-=======
-@import "tailwindcss";
->>>>>>> 0466c7fa16f3ee28786e90a37f25e97877f263ca
+  padding : 7px; */
+/* } */
+ 

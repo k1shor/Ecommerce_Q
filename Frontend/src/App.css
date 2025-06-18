@@ -1,7 +1,9 @@
-<<<<<<< HEAD
+@plugin "daisyui";
+@import "tailwindcss";
+
 /* header */
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -91,7 +93,7 @@ nav {
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   nav {
     position: absolute;
     top: 70px;
@@ -111,10 +113,10 @@ nav {
   .hamburger {
     display: flex;
   }
-}
+} */
 
 /* footer */
-footer {
+/* footer {
   background: white;
   padding-top: 50px;
 }
@@ -187,17 +189,15 @@ a:hover {
   font-size: 16px;
   padding: 7px;
 }
-=======
-@plugin "daisyui";
-@import "tailwindcss";
+ */
 
-.btn{
+/* .btn{
   padding: 10px 20px;
   @apply bg-blue-400 hover:bg-blue-300 active:bg-blue-500;
   border-radius: 10px;
   @apply shadow-lg m-2
   
-}
+} */
 
 
->>>>>>> 0466c7fa16f3ee28786e90a37f25e97877f263ca
+ 

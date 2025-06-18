@@ -21,7 +21,7 @@ app.use(morgan('dev'))
 app.use(cors())
 
 //routes
-app.use('/api', require('./routes/categoryRoute'));
+app.use('/api', require('./routes/categoryRoutes'));
 app.use('/api', require('./routes/subcategoryRoutes'));
 app.use('/api', require('./routes/userRoutes'))
 

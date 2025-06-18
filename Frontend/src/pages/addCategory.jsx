@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const AddCategoryPage = () => {
   const [formData, setFormData] = useState({
@@ -47,8 +47,12 @@ const AddCategoryPage = () => {
     <div className="flex flex-col lg:flex-row max-w-7xl mx-auto p-6 gap-6">
       <div className="lg:w-1/2">
         <div className="card bg-base-100 shadow-xl p-8">
-          <h2 className="card-title mb-6 text-2xl font-semibold">Add New Category</h2>
-          {successMessage && <div className="alert alert-success mb-4">{successMessage}</div>}
+          <h2 className="card-title mb-6 text-2xl font-semibold">
+            Add New Category
+          </h2>
+          {successMessage && (
+            <div className="alert alert-success mb-4">{successMessage}</div>
+          )}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="label mb-1">
@@ -66,7 +70,9 @@ const AddCategoryPage = () => {
 
             <div>
               <label className="label mb-1">
-                <span className="label-text text-base font-medium">Parent Category</span>
+                <span className="label-text text-base font-medium">
+                  Parent Category
+                </span>
               </label>
               <select
                 name="parent"
@@ -75,14 +81,18 @@ const AddCategoryPage = () => {
                 className="select select-bordered w-full"
               >
                 {parentCategories.map((cat) => (
-                  <option key={cat.value} value={cat.value}>{cat.label}</option>
+                  <option key={cat.value} value={cat.value}>
+                    {cat.label}
+                  </option>
                 ))}
               </select>
             </div>
 
             <div>
               <label className="label mb-1">
-                <span className="label-text text-base font-medium">Description</span>
+                <span className="label-text text-base font-medium">
+                  Description
+                </span>
               </label>
               <textarea
                 name="description"
@@ -127,7 +137,9 @@ const AddCategoryPage = () => {
 
       <div className="lg:w-1/2">
         <div className="card bg-base-100 shadow-xl p-8">
-          <h2 className="card-title mb-6 text-2xl font-semibold">Existing Categories</h2>
+          <h2 className="card-title mb-6 text-2xl font-semibold">
+            Existing Categories
+          </h2>
           {categories.length === 0 ? (
             <p className="text-gray-500">No categories added yet.</p>
           ) : (
