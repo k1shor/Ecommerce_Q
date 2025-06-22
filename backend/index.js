@@ -1,32 +1,38 @@
 const express = require('express');
-require ('dotenv').config();  
+require('dotenv').config();  
+const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT ;
+const port = process.env.PORT;
 
+// Database connection
 require('./database/connection');
-const morgan = require('morgan')
 
+// Import routes
 const categoryRoutes = require('./routes/categoryRoutes');
-const userRoute = require('./routes/userRoutes')
-const cors = require('cors')
+const subcategoryRoutes = require('./routes/subcategoryRoutes');
+const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes');
 
+// Middleware
+app.use(express.json());
+app.use(morgan('dev'));
+app.use(cors());
+
+// Test route
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-//middleware
-app.use(express.json());
-app.use(morgan('dev'))
-app.use(cors())
+// Use routes
+app.use('/api', categoryRoutes);
+app.use('/api', subcategoryRoutes);
+app.use('/api', userRoutes);
+app.use('/api', productRoutes);
 
-//routes
-app.use('/api', require('./routes/categoryRoutes'));
-app.use('/api', require('./routes/subcategoryRoutes'));
-app.use('/api', require('./routes/userRoutes'))
-
-
+// Start server
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);
-}   );
+});
 
