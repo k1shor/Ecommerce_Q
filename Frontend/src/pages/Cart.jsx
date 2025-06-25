@@ -1,61 +1,93 @@
-import React from 'react'
+// Cart.jsx
+import React, { useState } from 'react';
 
 const Cart = () => {
+  const [cartItems, setCartItems] = useState([
+    
+    {
+      id: 1,
+      name: "Product 1",
+      price: 10,
+      image: "tempelate.webp",
+      quantity: 2,
+      stock: 5,
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      price: 20,
+      image: "tempelate.webp",
+      quantity: 1,
+      stock: 3,
+    },
+  ]);
+
+  const increaseQty = (id) => {
+    setCartItems(prev =>
+      prev.map(item =>
+        item.id === id && item.quantity < item.stock
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    );
+  };
+
+  const decreaseQty = (id) => {
+    setCartItems(prev =>
+      prev.map(item =>
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  };
+
+  const removeItem = (id) => {
+    setCartItems(prev => prev.filter(item => item.id !== id));
+  };
+
+  const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
   return (
-  <div class="cart-container">
-    <h2>Your Cart</h2>
-
-    <div class="cart-item">
-      <div class="item-info">
-        <strong>Product 1</strong><br />
-        Short description
-      </div>
-      <div class="item-quantity">2</div>
-      <div class="item-price">$20.00</div>
+    <div>
+      <h1 className='text-xl font-bold mb-4'>Your Cart</h1>
+      {cartItems.length === 0 ? (
+        <p>No items in cart.</p>
+      ) : (
+        <table className="w-full text-left">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Product</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cartItems.map((item) => (
+              <tr key={item.id}>
+                <td><img src={item.image} alt={item.name} className="w-16 h-16" /></td>
+                <td>{item.name}</td>
+                <td>
+                  <button onClick={() => decreaseQty(item.id)}>-</button>
+                  {item.quantity}
+                  <button onClick={() => increaseQty(item.id)}>+</button>
+                </td>
+                <td>${item.price}</td>
+                <td>${item.price * item.quantity}</td>
+                <td>
+                  <button onClick={() => removeItem(item.id)}>Remove</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+      <div className="mt-4 font-bold">Total: ${total}</div>
     </div>
+  );
+};
 
-    <div class="cart-item">
-      <div class="item-info">
-        <strong>Product 2</strong><br />
-        Another item
-      </div>
-      <div class="item-quantity">1</div>
-      <div class="item-price">$15.00</div>
-    </div>
-
-    <div class="cart-item">
-      <div class="item-info">
-        <strong>Product 3</strong><br />
-        Another another item
-      </div>
-      <div class="item-quantity">4</div>
-      <div class="item-price">$12.00</div>
-    </div>
-
-    <div class="cart-item">
-      <div class="item-info">
-        <strong>Product 4</strong><br />
-        Another another another item
-      </div>
-      <div class="item-quantity">8</div>
-      <div class="item-price">$2.00</div>
-    </div>
-
-    <div class="cart-item">
-      <div class="item-info">
-        <strong>Product 5</strong><br />
-        Another another another another item
-      </div>
-      <div class="item-quantity">3</div>
-      <div class="item-price">$18.00</div>
-    </div>
-
-    <div class="total">Total: $173.00</div>
-
-    <button class="checkout-btn">Proceed to Checkout</button>
-  </div>
-
-  )
-}
-
-export default Cart
+export default Cart;

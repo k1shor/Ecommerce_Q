@@ -1,9 +1,9 @@
-@plugin "daisyui";
+/* @plugin "daisyui";
 @import "tailwindcss";
 
 /* header */
 
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -93,9 +93,9 @@ nav {
 }
 
 /* Responsive styles */
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   nav {
-    position: absolute;
+    position: sticky;
     top: 70px;
     right: 40px;
     background-color: #222;
@@ -113,10 +113,10 @@ nav {
   .hamburger {
     display: flex;
   }
-} */
+}
 
 /* footer */
-/* footer {
+footer {
   background: white;
   padding-top: 50px;
 }
@@ -189,7 +189,7 @@ a:hover {
   font-size: 16px;
   padding: 7px;
 }
- */
+
 
 /* .btn{
   padding: 10px 20px;
